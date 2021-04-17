@@ -85,9 +85,9 @@ export class StorageService {
     }
 
     setEmployeeList(){
-     var empList = [{"EmpNo":1, "Name":"Mary Tan", "PhoneNo":"0161234567", "Email":"abc@gmail.com","Gender":"Female", "Senior Manager", "DOB":"25-Jan-1970", "Salary":5000.00}, 
-     {"EmpNo":2,   "Name":"Aliasgar", "PhoneNo":"+60161234568", "Email":"xyz@yahoo.com","Gender":"Male", "Manager", "DOB":"02-Mar-1971", "Salary":3500.00}, 
-     {"EmpNo":3,   "Name":"Justin Bieber", "PhoneNo":"0161234569", "Email":"abc2@gmail.com","Gender":"Male", "Manager", "DOB":"25-May-1972", "Salary":3300.00}, 
+     var empList = [{"EmpNo":1, "Name":"Mary Tan", "PhoneNo":"0161234567", "Email":"abc@gmail.com","Gender":"Female", "Position":"Senior Manager", "DOB":"25-Jan-1970", "Salary":5000.00}, 
+     {"EmpNo":2,   "Name":"Aliasgar", "PhoneNo":"+60161234568", "Email":"xyz@yahoo.com","Gender":"Male", "Position":"Manager", "DOB":"02-Mar-1971", "Salary":3500.00}, 
+     {"EmpNo":3,   "Name":"Justin Bieber", "PhoneNo":"0161234569", "Email":"abc2@gmail.com","Gender":"Male", "Position":"Manager", "DOB":"25-May-1972", "Salary":3300.00}, 
      {"EmpNo":4,   "Name":"Chow Yun Fatt", "PhoneNo":"0161234570", "Email":"xyz2@yahoo.com","Gender":"Male", "Position":"Engineer", "DOB":"13-Feb-1973", "Salary":2800.00}, 
      {"EmpNo":5,   "Name":"Angela Baby", "PhoneNo":"0161234571", "Email":"abc3@gmail.com","Gender":"Female", "Position":"Designer", "DOB":"08-Aug-1974", "Salary":2700.00}, 
      {"EmpNo":6,   "Name":"Mohd Rizal", "PhoneNo":"+80161234569", "Email":"xyz3@yahoo.com","Gender":"Male", "Position":"Engineer", "DOB":"23-Jan-1975", "Salary":2500.00}, 
