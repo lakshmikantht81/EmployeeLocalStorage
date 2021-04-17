@@ -1,20 +1,33 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" >
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title style="font-size: 25px;">Employee Details</ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button style="margin-top: 15px; color: #3880ff;" (click)="AddNewEmploy()">Add</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+   <ion-toolbar>
+    <ion-searchbar #myInput placeholder="Employ Name" [(ngModel)]="name" (input)="filterItem(myInput.value)" animated="true"></ion-searchbar>
+  </ion-toolbar>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-list>
+        <ion-item *ngFor="let employ of filteredItems" (click)="selectEmploy(employ)">
+        <img class="circle-pic" src="http://autokadabra.ru/system/uploads/users/18/18340/small.png?1318432918" />
+        <p style="padding-left: 15px;"> 
+          <span style="font-size: 22px; padding-right: 5px;">{{employ.EmpNo}}</span>
+          <span style="text-align: left; font-size: 22px;">{{employ.Name}}</span><span style="padding-left: 5px; font-size: 15px; color: darkslategrey;">- {{employ.Position}}</span> <br> 
+          <span style="font-size: 13px; text-align: left">Email: {{employ.Email}} </span> <br>
+          <span style="font-size: 13px; text-align: left">Mobile: {{employ.PhoneNo}}</span></p>
+      </ion-item>
+    </ion-list>
+
+    <ion-infinite-scroll threshold="100px" id="infinite-scroll" (ionInfinite)="loadData($event)">
+      <ion-infinite-scroll-content
+        loading-spinner="bubbles"
+        loading-text="Loading more data...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
 </ion-content>

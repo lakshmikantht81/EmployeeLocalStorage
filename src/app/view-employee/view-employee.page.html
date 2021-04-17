@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Employee Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-label position="stacked">Employee No</ion-label>
+    <ion-input type="number" required [(ngModel)]="employData.EmpNo"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Name</ion-label>
+    <ion-input required [(ngModel)]="employData.Name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Phone</ion-label>
+    <ion-input required [(ngModel)]="employData.PhoneNo"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Email</ion-label>
+    <ion-input required [(ngModel)]="employData.Email"></ion-input>
+  </ion-item>
+
+  <ion-list>
+    <ion-radio-group required [(ngModel)]="employData.Gender">
+      <ion-list-header>
+        <ion-label>
+          Gender
+        </ion-label>
+      </ion-list-header>
+  
+      <ion-item>
+        <ion-label>Male</ion-label>
+        <ion-radio value="Male" ></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Female</ion-label>
+        <ion-radio value="Female"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+
+  <ion-item>
+    <ion-label position="stacked">Position</ion-label>
+    <ion-input required [(ngModel)]="employData.Position"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">DOB</ion-label>
+    <!-- <ion-input required type="date" displayFormat="MM DD YYYY" [(ngModel)]="employData.DOB"></ion-input> -->
+    <ion-datetime display-format="DD/MM/YYYY" id="dat" [(ngModel)]="employData.DOB"></ion-datetime>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Salary</ion-label>
+    <ion-input required type="number" [(ngModel)]="employData.Salary"></ion-input>
+  </ion-item>
+
+  <div class="ion-text-center">
+    <ion-button style="margin: 15px;" (click)="returnToHome()">Home</ion-button>
+    <ion-button style="margin: 15px;" (click)="saveEmploy()">Save</ion-button>
+    <ion-button style="margin: 15px;" (click)="deleteEmploy()">Delete</ion-button>
+  </div>
+</ion-content>

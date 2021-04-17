@@ -1,0 +1,79 @@
+<ion-header style="height: 65px;">
+  <ion-toolbar>
+    <ion-title style="padding-top: 15px; font-size: 25px;">Add Employee</ion-title>
+
+    <ion-buttons slot="secondary">
+      <ion-button (click)="AddEmploy();" style="color: #3880ff; margin-top: 25px; font-size: 13px;"> Save
+      </ion-button>
+      <ion-button (click)="backToHome();" style="color: #3880ff; margin-top: 25px; font-size: 13px;"> Back
+      </ion-button>
+
+      <!-- <ion-button (click)="AddEmploy();">
+        <ion-icon name="save" style="height: 23px; width: 23px; color: #3880ff;"></ion-icon>
+      </ion-button>
+      <ion-button (click)="backToHome();">
+        <ion-icon name="close-circle-outline" style="height: 25px; width: 25px; color: #eb2000"></ion-icon>
+      </ion-button> -->
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-label position="stacked">Employee No</ion-label>
+    <ion-input type="number" required [(ngModel)]="employData.EmpNo"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Name</ion-label>
+    <ion-input required [(ngModel)]="employData.Name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Phone</ion-label>
+    <ion-input required [(ngModel)]="employData.PhoneNo"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Email</ion-label>
+    <ion-input required [(ngModel)]="employData.Email"></ion-input>
+  </ion-item>
+
+  <ion-list>
+    <ion-radio-group required [(ngModel)]="employData.Gender">
+      <ion-list-header>
+        <ion-label>
+          Gender
+        </ion-label>
+      </ion-list-header>
+  
+      <ion-item>
+        <ion-label>Male</ion-label>
+        <ion-radio value="Male" ></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Female</ion-label>
+        <ion-radio value="Female"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+
+  <ion-item>
+    <ion-label position="stacked">Position</ion-label>
+    <ion-input required [(ngModel)]="employData.Position"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">DOB</ion-label>
+    <ion-input required type="date" [(ngModel)]="employData.DOB"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Salary</ion-label>
+    <ion-input required type="number" [(ngModel)]="employData.Salary"></ion-input>
+  </ion-item>
+  <!-- <div class="ion-text-center">
+    <ion-button style="margin-top: 20px;" (click)="AddEmploy()">Add Employee</ion-button>
+  </div> -->
+</ion-content>
