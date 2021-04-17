@@ -29,13 +29,12 @@ export class StorageService {
 
   async addEmployee(newEmp) {
     var empList=[];
-    await this.getEmployee().then(empListstr => {
+    await this.getEmployee().then(async empListstr => {
       if(empListstr!=null){
         empList=JSON.parse(empListstr);
       }
-
       empList.push(newEmp);
-      this.storage.set(EMP_KEY, JSON.stringify(empList));
+      await this.storage.set(EMP_KEY, JSON.stringify(empList));
     })
   }
 
@@ -67,7 +66,7 @@ export class StorageService {
     var empList=[];
     var newList=[];
 
-    await this.storage.get(EMP_KEY).then(empListstr => {
+    await this.storage.get(EMP_KEY).then(async empListstr => {
       if(empListstr!=null){
         empList=JSON.parse(empListstr);
 
@@ -79,12 +78,12 @@ export class StorageService {
             newList.push(i);
           }
         }
-        this.storage.set(EMP_KEY, JSON.stringify(newList));
+        await this.storage.set(EMP_KEY, JSON.stringify(newList));
       }
       });
     }
 
-    setEmployeeList(){
+    async setEmployeeList(){
      var empList = [{"EmpNo":1, "Name":"Mary Tan", "PhoneNo":"0161234567", "Email":"abc@gmail.com","Gender":"Female", "Position":"Senior Manager", "DOB":"25-Jan-1970", "Salary":5000.00}, 
      {"EmpNo":2,   "Name":"Aliasgar", "PhoneNo":"+60161234568", "Email":"xyz@yahoo.com","Gender":"Male", "Position":"Manager", "DOB":"02-Mar-1971", "Salary":3500.00}, 
      {"EmpNo":3,   "Name":"Justin Bieber", "PhoneNo":"0161234569", "Email":"abc2@gmail.com","Gender":"Male", "Position":"Manager", "DOB":"25-May-1972", "Salary":3300.00}, 
@@ -105,6 +104,6 @@ export class StorageService {
      {"EmpNo":18,  "Name":"Willson Wong 2", "PhoneNo":"+441612345332", "Email":"xyz49@yahoo.com","Gender":"Male", "Position":"Senior Manager", "DOB":"28-Feb-1987", "Salary":5500.00}, 
      {"EmpNo":19,  "Name":"Vivian Chong 2", "PhoneNo":"01612345752", "Email":"abc59@gmail.com","Gender":"Female", "Position":"CTO", "DOB":"25-Dec-1988", "Salary":7000.00}, 
      {"EmpNo":20,  "Name":"Shirley Tan Wai Ling 2", "PhoneNo":"01612345762", "Email":"xyz59@yahoo.com","Gender":"Female", "Position":"СМО", "DOB":"07-Jan-1989", "Salary":8000.00}]
-     this.storage.set(EMP_KEY, JSON.stringify(empList));
+     await this.storage.set(EMP_KEY, JSON.stringify(empList));
     }
 }
