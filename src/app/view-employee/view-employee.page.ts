@@ -28,14 +28,14 @@ export class ViewEmployeePage implements OnInit {
     this.router.navigate(['home']);
   }
 
-  deleteEmploy(){
-    this.storageService.deleteEmployee(this.employData.EmpNo);
+  async deleteEmploy(){
+    await this.storageService.deleteEmployee(this.employData.EmpNo);
     console.log(this.employData);
     this.router.navigate(['home']);
   }
 
-  saveEmploy(){
-    this.storageService.setEmploy(this.employData);
+  async saveEmploy(){
+    await this.storageService.setEmploy(this.employData);
     console.log(this.employData);
     this.router.navigate(['home']);
 }

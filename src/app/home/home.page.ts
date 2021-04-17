@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationExtras, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Platform, ToastController } from '@ionic/angular';
 import { objEmployee, StorageService,  } from '../services/storage.service';
 
@@ -14,11 +14,16 @@ export class HomePage implements OnInit {
     EmployPageList =[];
     filteredItems = [];
 
-    constructor(public router: Router, private storageService: StorageService, private plt:Platform, private toastController: ToastController) {
-  }
+    constructor(public router: Router, private storageService: StorageService, private plt:Platform, private toastController: ToastController,private activatedRoute:ActivatedRoute) {
+      this.activatedRoute.queryParams.subscribe(routeParams=>{
+        this.plt.ready().then(() =>{
+           this.loadEmployee();
+        })
+      })
+    }
 
   ngOnInit(){
-    this.plt.ready().then(() =>{ this.loadEmployee();})
+
   }
 
   loadEmployee(){
@@ -29,6 +34,8 @@ export class HomePage implements OnInit {
       }
       else{
         this.storageService.setEmployeeList();
+        this.loadEmployee()
+        return;
       }
       this.assignCopy();
     });

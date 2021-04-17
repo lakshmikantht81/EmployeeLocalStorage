@@ -18,14 +18,14 @@ export class AddEmployeePage implements OnInit {
     this.employData = new objEmployee();
   }
 
-  AddEmploy(){
+  async AddEmploy(){
       //this.storageService.addEmployee(this.employData).then(employ =>{
         // this.employData = employ;
         // this.show('Employee Added');
-        this.router.navigate(['home']);
+        // this.router.navigate(['home']);
       //})
       console.log(this.employData);
-      this.storageService.addEmployee(this.employData);
+      await this.storageService.addEmployee(this.employData);
       this.router.navigate(['home']);
   }
 
