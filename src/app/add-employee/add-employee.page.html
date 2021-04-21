@@ -4,7 +4,8 @@
 
     <ion-buttons slot="secondary">
       <ion-button (click)="AddEmploy();" style="color: #3880ff; margin-top: 25px; font-size: 13px;"> Save
-      </ion-button>
+    
+       </ion-button>
       <ion-button (click)="backToHome();" style="color: #3880ff; margin-top: 25px; font-size: 13px;"> Back
       </ion-button>
 
@@ -19,25 +20,47 @@
 </ion-header>
 
 <ion-content padding>
+  
   <ion-item>
-    <ion-label position="stacked">Employee No</ion-label>
+    <ion-label position="floating">Employee No</ion-label>
     <ion-input type="number" required [(ngModel)]="employData.EmpNo"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label position="stacked">Name</ion-label>
+    <ion-label position="floating">Name</ion-label>
     <ion-input required [(ngModel)]="employData.Name"></ion-input>
   </ion-item>
 
-  <ion-item>
-    <ion-label position="stacked">Phone</ion-label>
+  <!-- <ion-item>
+    <ion-label position="floating">Phone</ion-label>
     <ion-input required [(ngModel)]="employData.PhoneNo"></ion-input>
   </ion-item>
+  <ion-item>
+    <ion-label position="floating">Email</ion-label>
+    <ion-input required [(ngModel)]="employData.Email"></ion-input>
+  </ion-item> -->
+
+  <form [formGroup]="registrationForm">
+  <ion-item>
+    <ion-label position="floating">Phone</ion-label>
+    <ion-input required inputmode="tel" formControlName="phone" [(ngModel)]="employData.PhoneNo"></ion-input>
+  </ion-item>
+  <div *ngFor="let error of errorMessages.phone">
+    <ng-container *ngIf="phone.hasError(error.type) && (phone.dirty || phone.touched)">
+      <small class="error-message">{{error.message}}</small>
+    </ng-container>
+  </div>
 
   <ion-item>
-    <ion-label position="stacked">Email</ion-label>
-    <ion-input required [(ngModel)]="employData.Email"></ion-input>
+    <ion-label position="floating">Email</ion-label>
+    <ion-input required inputmode="email" formControlName="email" [(ngModel)]="employData.Email"></ion-input>
   </ion-item>
+  <div *ngFor="let error of errorMessages.email">
+    <ng-container *ngIf="email.hasError(error.type) && (email.dirty || email.touched)">
+      <small class="error-message">{{error.message}}</small>
+    </ng-container>
+  </div>
+  </form>
 
   <ion-list>
     <ion-radio-group required [(ngModel)]="employData.Gender">
@@ -60,7 +83,7 @@
   </ion-list>
 
   <ion-item>
-    <ion-label position="stacked">Position</ion-label>
+    <ion-label position="floating">Position</ion-label>
     <ion-input required [(ngModel)]="employData.Position"></ion-input>
   </ion-item>
 
@@ -70,10 +93,8 @@
   </ion-item>
 
   <ion-item>
-    <ion-label position="stacked">Salary</ion-label>
+    <ion-label position="floating">Salary</ion-label>
     <ion-input required type="number" [(ngModel)]="employData.Salary"></ion-input>
   </ion-item>
-  <!-- <div class="ion-text-center">
-    <ion-button style="margin-top: 20px;" (click)="AddEmploy()">Add Employee</ion-button>
-  </div> -->
+
 </ion-content>

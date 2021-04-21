@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { AddEmployeePageRoutingModule } from './add-employee-routing.module';
 import { AddEmployeePage } from './add-employee.page';
@@ -9,6 +9,7 @@ import { AddEmployeePage } from './add-employee.page';
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     IonicModule,
     AddEmployeePageRoutingModule
   ],
