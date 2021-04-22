@@ -30,7 +30,6 @@ export class HomePage implements OnInit {
     this.storageService.getEmployee().then(empList => {
       if(empList!=null){
         this.EmployPageList = JSON.parse(empList);
-        //this.assignCopy();
       }
       else{
         this.storageService.setEmployeeList();
@@ -58,6 +57,10 @@ export class HomePage implements OnInit {
   assignCopy(){
     this.filteredItems = Object.assign([], this.EmployPageList);
  }
+
+ onCancel(event) {
+  this.filterItem("");
+}
 
  filterItem(value){
   if(!value){

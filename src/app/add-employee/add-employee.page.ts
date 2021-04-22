@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { ToastController, AlertController } from '@ionic/angular';
 import { objEmployee,StorageService } from '../services/storage.service';
 import { FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms'
 
@@ -12,6 +12,7 @@ import { FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms'
 export class AddEmployeePage implements OnInit {
 
   employData; 
+  
   get phone(){
     return this.registrationForm.get('phone');
 
@@ -46,22 +47,46 @@ export class AddEmployeePage implements OnInit {
   ],
   });
 
-  constructor(public router: Router, public storageService: StorageService, private toastController: ToastController, public formBuilder: FormBuilder) { }
+  constructor(public router: Router, public storageService: StorageService, private toastController: ToastController, public formBuilder: FormBuilder, public alertCtrl: AlertController) { }
 
   ngOnInit() {
     this.employData = new objEmployee();
   }
 
   async AddEmploy(){
-      //this.storageService.addEmployee(this.employData).then(employ =>{
-        // this.employData = employ;
-        // this.show('Employee Added');
-        // this.router.navigate(['home']);
-      //})
-      console.log(this.employData);
-      await this.storageService.addEmployee(this.employData);
-      this.router.navigate(['home']);
-  }
+    //console.log(this.employData);
+    //await this.storageService.addEmployee(this.employData);
+    //this.router.navigate(['home']);
+
+    await this.storageService.getEmployee().then(async empListstr => {
+      var empList=[];
+      let empSts:boolean = false;
+      if(empListstr!=null){
+        empList=JSON.parse(empListstr);
+        for (let i of empList){
+          if(i.EmpNo === this.employData.EmpNo){
+            empSts = true;
+            break;
+          }
+        }
+
+        if(empSts === false ){
+            console.log(this.employData);
+            await this.storageService.addEmployee(this.employData);
+            this.router.navigate(['home']);
+        }
+        else{
+         var alert = this.alertCtrl.create({
+            header: "Employee Alert",
+            message: "Employee number is already exists. Please try with some other number.",
+            buttons:["Cancel"]
+          });
+
+          (await alert).present();
+        }
+      }
+      });
+  };
 
 
   backToHome(){
