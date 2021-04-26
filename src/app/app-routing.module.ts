@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'view-employee',
     loadChildren: () => import('./view-employee/view-employee.module').then( m => m.ViewEmployeePageModule)
   },
+  {
+    path: 'modalpopup',
+    loadChildren: () => import('./modalpopup/modalpopup.module').then( m => m.ModalpopupPageModule)
+  },
 ];
 
 @NgModule({

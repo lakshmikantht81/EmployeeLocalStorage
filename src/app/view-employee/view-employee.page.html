@@ -5,87 +5,205 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-item>
-    <ion-label position="floating">Employee No</ion-label>
-    <ion-input type="number" required [(ngModel)]="employData.EmpNo" readonly></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label position="floating">Name</ion-label>
-    <ion-input required [(ngModel)]="employData.Name" maxlength="20"></ion-input>
-  </ion-item>
-
-  <!-- <ion-item>
-    <ion-label position="stacked">Phone</ion-label>
-    <ion-input required [(ngModel)]="employData.PhoneNo"></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label position="stacked">Email</ion-label>
-    <ion-input required [(ngModel)]="employData.Email"></ion-input>
-  </ion-item> -->
-
-  <form [formGroup]="registrationForm">
+  <!-- <form [formGroup]="addEmployeeForm">
+    <ion-item>
+      <ion-label position="floating">Employee No</ion-label>
+      <ion-input type="number" required formControlName="fcEmpNo" [(ngModel)]="employData.EmpNo" readonly></ion-input>
+    </ion-item>
+    <div *ngFor="let error of errorMessages.fcEmpNo">
+      <ng-container *ngIf="fcEmpNo.hasError(error.type) && (fcEmpNo.dirty || fcEmpNo.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+  
+    <ion-item>
+      <ion-label position="floating">Name</ion-label>
+      <ion-input required formControlName="fcName" [(ngModel)]="employData.Name" maxlength="30"></ion-input>
+    </ion-item>
+    <div *ngFor="let error of errorMessages.fcName">
+      <ng-container *ngIf="fcName.hasError(error.type) && (fcName.dirty || fcName.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+  
     <ion-item>
       <ion-label position="floating">Phone</ion-label>
-      <ion-input required inputmode="tel" placeholder="+xx-xxx-xxxxxx" formControlName="phone" [(ngModel)]="employData.PhoneNo" maxlength="15"></ion-input>
+      <ion-input required inputmode="tel" placeholder="+xxxxxxxxxxx" formControlName="fcPhone" [(ngModel)]="employData.PhoneNo" maxlength="15"></ion-input>
     </ion-item>
-    <div *ngFor="let error of errorMessages.phone">
-      <ng-container *ngIf="phone.hasError(error.type) && (phone.dirty || phone.touched)">
+    <div *ngFor="let error of errorMessages.fcPhone">
+      <ng-container *ngIf="fcPhone.hasError(error.type) && (fcPhone.dirty || fcPhone.touched)">
         <small class="error-message">{{error.message}}</small>
       </ng-container>
     </div>
   
     <ion-item>
       <ion-label position="floating">Email</ion-label>
-      <ion-input required inputmode="email" placeholder="ex: abc@xyz.com" formControlName="email" [(ngModel)]="employData.Email" maxlength="30"></ion-input>
+      <ion-input required inputmode="email" placeholder="ex: abc@xyz.com" formControlName="fcEmail" [(ngModel)]="employData.Email" maxlength="30"></ion-input>
     </ion-item>
-    <div *ngFor="let error of errorMessages.email">
-      <ng-container *ngIf="email.hasError(error.type) && (email.dirty || email.touched)">
+    <div *ngFor="let error of errorMessages.fcEmail">
+      <ng-container *ngIf="fcEmail.hasError(error.type) && (fcEmail.dirty || fcEmail.touched)">
         <small class="error-message">{{error.message}}</small>
       </ng-container>
     </div>
-    </form>
-
-  <ion-list>
-    <ion-radio-group required [(ngModel)]="employData.Gender">
-      <ion-list-header>
-        <ion-label>
-          Gender
-        </ion-label>
-      </ion-list-header>
+    
   
-      <ion-item>
-        <ion-label>Male</ion-label>
-        <ion-radio value="Male" ></ion-radio>
-      </ion-item>
+    <ion-list>
+      <ion-radio-group required [(ngModel)]="employData.Gender" formControlName="fcGender">
+        <ion-list-header>
+          <ion-label>
+            Gender
+          </ion-label>
+        </ion-list-header>
+    
+        <ion-item>
+          <ion-label>Male</ion-label>
+          <ion-radio value="Male" ></ion-radio>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label>Female</ion-label>
+          <ion-radio value="Female"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+    <div *ngFor="let error of errorMessages.fcGender">
+      <ng-container *ngIf="fcGender.hasError(error.type) && (fcGender.dirty || fcGender.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+  
+    <ion-item>
+      <ion-label position="floating">Position</ion-label>
+      <ion-input required formControlName="fcPosition" [(ngModel)]="employData.Position" maxlength="20"></ion-input>
+    </ion-item>
+    <div *ngFor="let error of errorMessages.fcPosition">
+      <ng-container *ngIf="fcPosition.hasError(error.type) && (fcPosition.dirty || fcPosition.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+  
+    <ion-item>
+      <ion-label position="floating">Date of Birth</ion-label>
+      <ion-datetime placeholder="dd-mmm-yyyy" displayFormat="DD-MMM-YYYY" formControlName="fcDOB" [(ngModel)]="employData.DOB"></ion-datetime>
+    </ion-item>
+    <div *ngFor="let error of errorMessages.fcDOB">
+      <ng-container *ngIf="fcDOB.hasError(error.type) && (fcDOB.dirty || fcDOB.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+  
+    <ion-item>
+      <ion-label position="floating">Salary</ion-label>
+      <ion-input required type="number" formControlName="fcSalary" decimal="true" [(ngModel)]="employData.Salary"></ion-input>
+    </ion-item>
+    <div *ngFor="let error of errorMessages.fcSalary">
+      <ng-container *ngIf="fcSalary.hasError(error.type) && (fcSalary.dirty || fcSalary.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+  </form> -->
 
-      <ion-item>
-        <ion-label>Female</ion-label>
-        <ion-radio value="Female"></ion-radio>
-      </ion-item>
-    </ion-radio-group>
-  </ion-list>
+    <form [formGroup]="addEmployeeForm">
+    <ion-grid class="ion-margin" style="margin-top: 10px; margin-bottom: 5px;">
+      <ion-row>
+        <ion-col style="column-span: 2; text-align: center;" (click)="presentModal()">
+          <img required src="{{employData.ImageURL}}" [ngClass]="(employData.ImageURL == null || employData.ImageURL == '') ? 'bg-image' : 'bg-image-empty'" style="width: 320px; height: 320px; left:calc((100% - 320)/2);"/>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-col-header">Employee Name</ion-col>
+        <ion-col class="ion-col">
+          <ion-input required formControlName="fcName" [(ngModel)]="employData.Name" maxlength="30"></ion-input>
+          <div *ngFor="let error of errorMessages.fcName">
+            <ng-container *ngIf="fcName.hasError(error.type) && (fcName.dirty || fcName.touched)">
+              <small class="error-message">{{error.message}}</small>
+            </ng-container>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-col-header">Phone No</ion-col>
+        <ion-col class="ion-col">
+          <ion-input required inputmode="tel" placeholder="+xxxxxxxxxxx" formControlName="fcPhone" [(ngModel)]="employData.PhoneNo" maxlength="15"></ion-input>
+          <div *ngFor="let error of errorMessages.fcPhone">
+            <ng-container *ngIf="fcPhone.hasError(error.type) && (fcPhone.dirty || fcPhone.touched)">
+              <small class="error-message">{{error.message}}</small>
+            </ng-container>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-col-header">Email</ion-col>
+        <ion-col class="ion-col">
+          <ion-input required inputmode="email" placeholder="ex: abc@xyz.com" formControlName="fcEmail" [(ngModel)]="employData.Email" maxlength="30"></ion-input>
+          <div *ngFor="let error of errorMessages.fcEmail">
+            <ng-container *ngIf="fcEmail.hasError(error.type) && (fcEmail.dirty || fcEmail.touched)">
+              <small class="error-message">{{error.message}}</small>
+            </ng-container>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-col-header">Gender</ion-col>
+        <ion-col class="ion-col">
+            <ion-select required [(ngModel)]="employData.Gender" formControlName="fcGender" style="padding-left: 7px;">
+              <ion-select-option value="Male">Male</ion-select-option>
+              <ion-select-option value="Female">Female</ion-select-option>
+            </ion-select>
+            <div *ngFor="let error of errorMessages.fcGender">
+              <ng-container *ngIf="fcGender.hasError(error.type) && (fcGender.dirty || fcGender.touched)">
+                <small class="error-message">{{error.message}}</small>
+              </ng-container>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-col-header">Position</ion-col>
+        <ion-col class="ion-col">
+          <ion-input required formControlName="fcPosition" [(ngModel)]="employData.Position" maxlength="20"></ion-input>
+          <div *ngFor="let error of errorMessages.fcPosition">
+            <ng-container *ngIf="fcPosition.hasError(error.type) && (fcPosition.dirty || fcPosition.touched)">
+              <small class="error-message">{{error.message}}</small>
+            </ng-container>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-col-header">DOB</ion-col>
+        <ion-col class="ion-col">
+          <ion-datetime placeholder="dd-mmm-yyyy" displayFormat="DD-MMM-YYYY" formControlName="fcDOB" [(ngModel)]="employData.DOB" style="padding-left: 7px;"></ion-datetime>
+          <div *ngFor="let error of errorMessages.fcDOB">
+            <ng-container *ngIf="fcDOB.hasError(error.type) && (fcDOB.dirty || fcDOB.touched)">
+              <small class="error-message">{{error.message}}</small>
+            </ng-container>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-col-header ion-col-bottom">Salary</ion-col>
+        <ion-col class="ion-col ion-col-bottom" style="text-align: right; padding-right: 10px;">
+          <!-- <ion-input required type="number" formControlName="fcSalary" decimal="true" [(ngModel)]="employData.Salary" ></ion-input> -->
+          <ion-input required type="number" formControlName="fcSalary" decimal="true" [(ngModel)]="employData.Salary" (ionBlur)="addDecimal(employData.Salary)"></ion-input>
+          <div *ngFor="let error of errorMessages.fcSalary">
+            <ng-container *ngIf="fcSalary.hasError(error.type) && (fcSalary.dirty || fcSalary.touched)">
+              <small class="error-message">{{error.message}}</small>
+            </ng-container>
+          </div>
+        </ion-col>
+      </ion-row>
 
-  <ion-item>
-    <ion-label position="floating">Position</ion-label>
-    <ion-input required [(ngModel)]="employData.Position" maxlength="20"></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label position="stacked">DOB</ion-label>
-    <!-- <ion-input required type="date" displayFormat="MM DD YYYY" [(ngModel)]="employData.DOB"></ion-input> -->
-    <ion-datetime display-format="DD/MM/YYYY" id="dat" [(ngModel)]="employData.DOB"></ion-datetime>
-  </ion-item>
-
-  <ion-item>
-    <ion-label position="floating">Salary</ion-label>
-    <ion-input required type="number" [(ngModel)]="employData.Salary"></ion-input>
-  </ion-item>
+      <!-- <ion-row>
+        <ion-col class="ion-col-header ion-col-remarks">Remarks</ion-col>
+        <ion-col class="ion-col ion-col-remarks" style="margin: 0px; padding-top: 6px initial;">
+          <ion-textarea formControlName="fcRemarks" rows="10" maxlength="1000" [(ngModel)]="employData.Remarks" style="margin: 0px; padding-top: 6px initial;"></ion-textarea>
+        </ion-col>
+      </ion-row> -->
+    </ion-grid>
+  </form>
 
   <div class="ion-text-center">
     <ion-button style="margin: 15px;" (click)="returnToHome()">Home</ion-button>
-    <ion-button style="margin: 15px;" (click)="saveEmploy()">Save</ion-button>
+    <ion-button style="margin: 15px;" [disabled]="!addEmployeeForm.valid" (click)="saveEmploy()">Save</ion-button>
     <ion-button style="margin: 15px;" (click)="deleteEmploy()">Delete</ion-button>
   </div>
 </ion-content>

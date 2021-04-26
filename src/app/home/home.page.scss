@@ -27,8 +27,8 @@
 }
 
 .image {
-  height: 5vw; 
-  width: 5vw; 
+ height: 5vw; 
+ width: 5vw; 
  border: 2px solid #fff;
  border-radius: 50%;
  box-shadow: 0 0 5px gray;
@@ -43,3 +43,23 @@
  -webkit-border-radius: 50%;
  border-radius: 50%;
 }
+
+// .bg-image-empty{
+//   background-image: none;
+//   background-color: transparent;
+//   width:50px;
+//   height:50px;
+//   -webkit-border-radius: 50%;
+//   border-radius: 50%;
+// }
+
+// .bg-image{
+//   width:50px;
+//   height:50px;
+//   -webkit-border-radius: 50%;
+//   border-radius: 50%;
+//   background-image: url("../../assets/ProfilePic.jpg");
+//   background-repeat: no-repeat;
+//   background-color: #FFFFFF;
+//   background-position: center;
+// }

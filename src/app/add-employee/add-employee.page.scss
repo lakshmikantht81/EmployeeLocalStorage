@@ -2,3 +2,16 @@
     color: red;
     padding-left: 5px;
 }
+
+.bg-image-empty{
+    background-image: none;
+    background-color: transparent;
+}
+
+.bg-image{
+    background-image: url("../../assets/NoImage.png");
+    background-repeat: no-repeat;
+    background-color: #FFFFFF;
+    background-position: center;
+}
+

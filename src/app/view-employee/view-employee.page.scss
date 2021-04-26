@@ -2,3 +2,46 @@
     color: red;
     padding-left: 5px;
 }
+
+.ion-col-header{
+    height: 30px; 
+    width: 135px; 
+    max-width: 135px;
+    border: 1px black solid; 
+    border-bottom: 0px;
+    background-color: gainsboro;
+    padding-bottom: 0px;
+}
+
+.ion-col{
+    height: 30px; 
+    border: 1px black solid; 
+    border-bottom: 0px;
+    padding: 0px;
+}
+
+.ion-col-bottom{
+    border: 1px black solid; 
+}
+
+.ion-col-remarks{
+    min-height: 100px; 
+    max-height: 100px;
+    border: 1px black solid; 
+}
+
+.ion-col:ion-select{
+  padding: 0px;
+}
+
+.bg-image-empty{
+    background-image: none;
+    background-color: transparent;
+}
+
+.bg-image{
+    background-image: url("../../assets/NoImage.png");
+    background-repeat: no-repeat;
+    background-color: #FFFFFF;
+    background-position: center;
+}
